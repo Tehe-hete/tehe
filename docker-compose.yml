@@ -1,0 +1,12 @@
+version: '3.8'
+services:
+  proxy:
+    build: .
+    ports:
+      - "${PORT:-8080}:8080"
+    environment:
+      - PROXY_USER=${PROXY_USER:-proxyuser}
+      - PROXY_PASS=${PROXY_PASS:-proxypass}
+      - PORT=${PORT:-8080}
+      - WHITELIST_HOSTS=${WHITELIST_HOSTS:-}
+    restart: unless-stopped
